@@ -1,23 +1,20 @@
 import numpy as np
 
 class Cond_Prob:
-    def _init_(self, beta, g, h):
+    def _init_(self, beta, g, h, lam):
         self.beta = beta
-        self.g= g
-        self.h = h
-        self.probs_x_if_mm = Cond_Prob.calc_cond_probs(-1, -1, beta, g, h)
-        self.probs_x_if_mp = Cond_Prob.calc_cond_probs(-1, +1, beta, g, h)
-        self.probs_x_if_pm = Cond_Prob.calc_cond_probs(+1, -1, beta, g, h)
-        self.probs_x_if_pp = Cond_Prob.calc_cond_probs(+1, +1, beta, g, h)
+        self.g= g9
+        self.h = h8
+        self.lam = lam
 
-    @staticmethod
-    def calc_cond_probs(pa_spin1, pa_spin2, beta, g, h):
-        energy_plus = g*(pa_spin1 + pa_spin2)/2 + h
-        energy_minus = -g*(pa_spin1 + pa_spin2)/2 - h
+    def calc_cond_probs_y_if_abcd_x(self, abcd_state, x_state):
+        abcd_sum = np.sum(abcd_state)
+        energy_plus = self.g*abcd_sum/2 + self.h -self.lam*(1-x_state)
+        energy_minus = -self.g*abcd_sum/2 - self.h-self.lam(-1, - x_state)
         zz = energy_plus + energy_minus
-        prob_m = np.exp(-beta* energy_minus)/zz
-        prob_p = np.exp(-beta* energy_plus)/zz
-        return [prob_m, prob_p, zz]
+        cond_prob_m = np.exp(-self.beta*energy_minus)/zz
+        cond_prob_p = np.exp(-self.beta*energy_plus)/zz
+        return [cond_prob_m, cond_prob_p, zz]
 
 
 
