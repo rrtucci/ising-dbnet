@@ -9,8 +9,8 @@ from utils import *
 
 
 class Net:
-    def __init__(self, beta, g, h):
-        self.cpt = Cond_Prob(beta, g, h)
+    def __init__(self, beta, jj, h):
+        self.cpt = Cond_Prob(beta, jj, h)
         self.x_nodes = []
         self.y_nodes = []
         self.create_nodes()
@@ -99,7 +99,7 @@ class Net:
 
 if __name__ == "__main__":
     def main1():
-        net = Net(beta=1, g=.2, h=.3)
+        net = Net(beta=1, jj=.2, h=.3)
         for i in range(7):
             print("*******x_nodes[i]:")
             net.x_nodes[i].describe_self()
@@ -108,7 +108,7 @@ if __name__ == "__main__":
             print("*******y_nodes[i]:")
             net.y_nodes[i].describe_self()
     def main2(do_plot):
-        net = Net(beta=1, g=.2, h=.3)
+        net = Net(beta=1, jj=.2, h=.3)
         dot_file = "test.txt"
         net.write_dot_file(dot_file)
         if do_plot:

@@ -2,9 +2,9 @@ import numpy as np
 
 
 class Cond_Prob:
-    def __init__(self, beta, g, h):
+    def __init__(self, beta, jj, h):
         self.beta = beta
-        self.g = g
+        self.jj = jj
         self.h = h
 
     def calc_cond_probs_y_if_abcd_x(self, abcd_states, x_state):
@@ -12,8 +12,8 @@ class Cond_Prob:
             str(abcd_states) + " is illegal"
         assert x_state in [-1, 1]
         abcd_sum = np.sum(abcd_states)
-        energy_plus = self.g * abcd_sum / 2 + self.h
-        energy_minus = -self.g * abcd_sum / 2 - self.h
+        energy_plus = self.jj * abcd_sum / 2 + self.h
+        energy_minus = -self.jj * abcd_sum / 2 - self.h
         # print("energy", energy_plus, energy_minus)
         energy_plus *= self.beta
         energy_minus *= self.beta
@@ -34,6 +34,6 @@ class Cond_Prob:
 
 if __name__ == "__main__":
     def main():
-        cpt = Cond_Prob(beta=1.0, g=.3, h=.2)
+        cpt = Cond_Prob(beta=1.0, jj=.3, h=.2)
         print(cpt.calc_cond_probs_y_if_abcd_x([1, 1, -1, -1], -1))
     main()

@@ -13,5 +13,5 @@ def efficiency_to_hex(e, cmap_name="viridis"):
     Map efficiency e in [0,1] to a hex color using a Matplotlib colormap.
     """
     cmap = cm.get_cmap(cmap_name)
-    rgba = cmap(e)                 # (r, g, b, a) in [0,1]
+    rgba = cmap(e)                 # (r, jj, b, a) in [0,1]
     return mcolors.to_hex(rgba)    # '#rrggbb'
