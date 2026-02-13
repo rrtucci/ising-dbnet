@@ -87,13 +87,10 @@ class Net:
         return mag / NUM_DNODES
 
     def load_x_node_probs(self):
-        nd_id = 0
-        for row in range(1, DGRAPH_NUM_ROWS):
-            for col in range(1, DGRAPH_NUM_COLS):
-                nd_id += 1
-                y_nd = self.get_nd_from_id(nd_id, "Y")
-                x_nd = self.get_nd_from_id(nd_id, "X")
-                x_nd.probs = y_nd.probs
+        for nd_id in range(1, NUM_DNODES + 1):
+            y_nd = self.get_nd_from_id(nd_id, "Y")
+            x_nd = self.get_nd_from_id(nd_id, "X")
+            x_nd.probs = y_nd.probs
 
     def write_dot_file(self, fname):
         with open(fname, "w") as f:
@@ -127,14 +124,13 @@ if __name__ == "__main__":
 
 
     def main2(do_plot):
-        beta_jj = BETA_JJ_CURIE * 3
+        beta_jj = BETA_JJ_CURIE * 5
         jj = 1  # no jj dependance when h=0
         beta = beta_jj / jj
         lam = jj * 3
         h = 0
         num_iter = 19
-        net = Net(beta=beta, jj=jj, h=h, lam=lam, num_iter=num_iter,
-                  do_reversing=True)
+        net = Net(beta=beta, jj=jj, h=h, lam=lam, num_iter=num_iter)
         dot_file = "test.txt"
         net.write_dot_file(dot_file)
         if do_plot:
