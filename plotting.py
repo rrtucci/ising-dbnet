@@ -55,3 +55,70 @@ def plot_dot_with_colorbar(
 
         plt.tight_layout()
         plt.show()
+
+
+import matplotlib.pyplot as plt
+
+import matplotlib.pyplot as plt
+
+import matplotlib.pyplot as plt
+
+
+def plot_parametric_curve(param_to_x_y):
+    # Sort dictionary by parameter p0
+    sorted_items = sorted(param_to_x_y.items())
+
+    p_vals = [item[0] for item in sorted_items]
+    x_vals = [item[1][0] for item in sorted_items]
+    y_vals = [item[1][1] for item in sorted_items]
+
+    plt.figure()
+
+    # Plot curve
+    plt.plot(x_vals, y_vals, marker='o', label="Parametric Curve")
+
+    # Plot line x = y
+    min_val = min(min(x_vals), min(y_vals))
+    max_val = max(max(x_vals), max(y_vals))
+    plt.plot([min_val, max_val], [min_val, max_val], 'r-', label="x = y")
+
+    # Label first and last points
+    if len(x_vals) > 0:
+        # First point
+        plt.annotate(
+            f"{p_vals[0]:.2f}",
+            (x_vals[0], y_vals[0]),
+            textcoords="offset points",
+            xytext=(5, 5)
+        )
+
+        # Last point
+        plt.annotate(
+            f"{p_vals[-1]:.2f}",
+            (x_vals[-1], y_vals[-1]),
+            textcoords="offset points",
+            xytext=(5, 5)
+        )
+
+    plt.xlabel("av_ent")
+    plt.ylabel("av_cond_info")
+    plt.gca().set_aspect('equal', adjustable='box')
+
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+if __name__ == "__main__":
+    def main():
+        param_to_x_y = {
+            0.0: (0.0, 0.0),
+            0.2: (0.1, 0.15),
+            0.4: (0.25, 0.3),
+            0.6: (0.5, 0.45),
+            0.8: (0.7, 0.75),
+            1.0: (1.0, 1.0),
+        }
+
+        plot_parametric_curve(param_to_x_y)
+    main()

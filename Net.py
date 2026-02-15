@@ -27,8 +27,8 @@ class Net:
             else:
                 reversed_sweep = False
             self.calc_y_node_params(reversed_sweep)
-            self.mag = self.calc_mag()
-            self.av_eff = self.calc_av_eff()
+            self.mag = self.get_mag()
+            self.av_eff = self.get_av_eff()
             if self.av_eff[1]:
                 av_eff_str = f"{self.av_eff[0]:.5f}"
             else:
@@ -101,14 +101,22 @@ class Net:
             # print("mgbyt-mutual, entropy, eff", y_nd.mutual_info,
             #       y_nd.entropy, y_nd.efficiency)
 
-    def calc_mag(self):
+    def get_mag(self):
         mag = 0
         for y_nd in self.y_nodes:
             mag += -y_nd.probs[0] + y_nd.probs[1]
             # print("mnk", y_nd.probs[0], y_nd.probs[1], mag)
         return mag / NUM_DNODES
 
-    def calc_av_eff(self):
+    def get_av_cond_info_and_entropy(self):
+        sum_cond_info=0
+        sum_ent = 0
+        for y_nd in self.y_nodes:
+            sum_cond_info += y_nd.cond_info
+            sum_ent += y_nd.entropy
+        return sum_ent/NUM_DNODES, sum_cond_info/NUM_DNODES
+
+    def get_av_eff(self):
         sum_eff = 0
         num = 0
         no_undef_eff = True
@@ -155,7 +163,7 @@ class Net:
             str0 += "}"
             f.write(str0)
 
-    def do_plot(self, dot_file):
+    def plot_lattice(self, dot_file):
         self.write_dot_file(dot_file)
         if self.p0:
             p0_str = f"{self.p0:.3f}"
@@ -193,7 +201,7 @@ if __name__ == "__main__":
                   num_iter=num_iter,
                   p0=None,
                   do_reversing=False) #no change if do reversing
-        net.do_plot("test.txt")
+        net.plot_lattice("test.txt")
 
 
 
