@@ -1,6 +1,5 @@
-# bnet_rg (Bayesian Network Renormalization Group)
+# Welcome to bnet_rg (Bayesian Network Renormalization Group)
 
-## Welcome to bnet_rg. 
 
 This python software was written as an appendix to a chapter
 for my free open source book 
