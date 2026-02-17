@@ -151,6 +151,36 @@ def plot_parametric_curve(param_to_x_y):
     plt.show()
 
 
+def plot_x_to_y(x_to_y,
+                xlabel="beta_hat",
+                ylabel="mag"):
+    """
+    Plots a dictionary mapping x -> y.
+
+    Parameters
+    ----------
+    x_to_y: dict
+    xlabel: str
+    ylabel: str
+    """
+
+    # Sort by x so the curve is ordered
+    x_vals = sorted(x_to_y.keys())
+    y_vals = [x_to_y[x] for x in x_vals]
+
+    plt.figure()
+    plt.plot(x_vals, y_vals, marker='o')
+
+    # Axis labels
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+
+    # Vertical line at x = 1
+    plt.axvline(x=1, color='red')
+
+    plt.show()
+
+
 if __name__ == "__main__":
     def main():
         param_to_x_y = {
