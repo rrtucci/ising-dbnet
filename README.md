@@ -1,10 +1,10 @@
-## bnet_rg (Bayesian Network Renormalization Group)
+# bnet_rg (Bayesian Network Renormalization Group)
 
-# Welcome to bnet_rg. 
+## Welcome to bnet_rg. 
 
 This python software was written as an appendix to a chapter
 for my free open source book 
-[https://github.com/rrtucci/Bayesuvius]("Bayesuvius"). The
+["Bayesuvius"](https://github.com/rrtucci/Bayesuvius). The
 subject of the chapter is Group techniques as they 
 apply to 
 Bayesian networks.
