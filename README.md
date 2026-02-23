@@ -1,16 +1,16 @@
-# Welcome to bnet_rg (Bayesian Network Renormalization Group)
+# Welcome to ising-dbnet (Ising Dynamical Bayesian Network)
 
 
 This python software was written as a supplement to 
-Chapter 93
-entitled " Renormalization Group for Bayesian Networks", 
+Chapter 50
+entitled "Ising Dynamical Bayesian Network", 
 of my free open source book 
 ["Bayesuvius"](https://github.com/rrtucci/Bayesuvius). 
 
-If you just want to download Chapter 93 
+If you just want to download Chapter 50 
 instead of the whole book,
 [here is a link](https://github.com/rrtucci/Bayesuvius/blob/master/bnet_rg-chapter.pdf) 
-to Chapter 93 only.
+to Chapter 50 only.
 
 
 
