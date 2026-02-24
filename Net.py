@@ -10,11 +10,10 @@ from utils import *
 
 class Net:
     """
-
     Attributes
     ----------
     av_eff: float
-        average efficiency (1/NUM_DNODES)\sum_i epsilon(S_i^Y|S_i^X)
+        average efficiency (1/NUM_DNODES) \\sum_i epsilon(S_i^Y|S_i^X)
     beta: float
         1/T, inverse temperature
     cpt: Cond_Prob
@@ -29,7 +28,7 @@ class Net:
         coupling constant, energy contribution is $-lam* S_i^X S_i^Y$. lam=0
         in this study
     mag: float
-        magnetization (1/NUM_DNODES)\sum_i S_i^Y
+        magnetization (1/NUM_DNODES)\\sum_i S_i^Y
     num_iter: int
         number of  iterations
     x_nodes: list[Node]
@@ -192,8 +191,7 @@ class Net:
     def get_mag(self):
         """
         This method returns the magnetization of the lattice
-
-        (1/NUM_DNODES)\sum_i S_i^Y
+        (1/NUM_DNODES)\\sum_i S_i^Y
 
         Returns
         -------
